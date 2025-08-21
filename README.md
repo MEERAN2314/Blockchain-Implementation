@@ -77,3 +77,22 @@ The user interface has been significantly improved with:
 *   `slideInLeft` and `slideInRight` animations for `h2` titles and blockchain table rows, creating a dynamic entry effect.
 *   Enhanced input fields and buttons with hover and active states.
 *   A custom, animated message box for transaction feedback, replacing the default browser `alert()`.
+
+## Screenshots
+
+Here are some screenshots of the application:
+
+### Homepage
+![Homepage](Output%20Images/image1.png)
+
+### Add Transaction Form
+![Add Transaction Form](Output%20Images/image2.png)
+
+### Blockchain Table
+![Blockchain Table](Output%20Images/image3.png)
+
+### Transaction Added Feedback
+![Transaction Added Feedback](Output%20Images/image4.png)
+
+### Error Feedback
+![Error Feedback](Output%20Images/image5.png)
