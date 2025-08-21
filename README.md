@@ -96,3 +96,6 @@ Here are some screenshots of the application:
 
 ### Error Feedback
 ![Error Feedback](Output%20Images/image5.png)
+
+### Additional Screenshot
+![Additional Screenshot](Output%20Images/image6.png)
