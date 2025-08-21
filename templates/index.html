@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0f2f5 0%, #e0e5ec 100%);
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        .container {
+            max-width: 1000px;
+            width: 90%;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            animation: fadeInScale 0.8s ease-out forwards;
+            opacity: 0; /* Start hidden for animation */
+        }
+        h1 {
+            color: #0056b3;
+            font-size: 3em;
+            margin-bottom: 25px;
+            text-align: center;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+        h2 {
+            color: #007bff;
+            font-size: 2em;
+            margin-top: 35px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 8px;
+            animation: slideInLeft 0.7s ease-out forwards;
+            opacity: 0;
+        }
+        p {
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.15em;
+            color: #555;
+        }
+        form {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 35px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.08);
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.3s;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #495057;
+            font-size: 1.05em;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: calc(100% - 24px); /* Adjust for padding and border */
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            font-size: 1.05em;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.07);
+        }
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+            outline: none;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            display: block;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+        }
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.5s;
+        }
+        th, td {
+            border: 1px solid #e9ecef;
+            padding: 18px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.95em;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        tr:hover {
+            background-color: #e2f0ff;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            transform: translateX(5px);
+        }
+        td {
+            vertical-align: top;
+            word-break: break-all;
+            font-size: 0.95em;
+            color: #444;
+        }
+        hr {
+            border: 0;
+            border-top: 1px dashed #ccc;
+            margin: 10px 0;
+        }
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2.2em;
+            }
+            h2 {
+                font-size: 1.7em;
+            }
+            table {
+                font-size: 0.8em;
+            }
+            th, td {
+                padding: 12px;
+            }
+            button {
+                padding: 12px 25px;
+                font-size: 1.1em;
+            }
+        }
+
+        /* New Animations */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .block-row {
+            animation: slideInLeft 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        .block-row:nth-child(even) { /* Apply to even rows for alternating effect */
+            animation: slideInRight 0.6s ease-out forwards;
+        }
+
+        /* Message Box for transaction feedback */
+        .message-box {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #28a745; /* Green for success */
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease-out, visibility 0.4s ease-out, transform 0.4s ease-out;
+            z-index: 1000;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .message-box.error {
+            background-color: #dc3545; /* Red for error */
+        }
+        .message-box.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        .message-box .icon {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Blockchain Explorer</h1>
+
+        <h2>Add New Transaction</h2>
+        <form id="transaction-form">
+            <label for="sender">Sender:</label><br>
+            <input type="text" id="sender" name="sender" required><br><br>
+            <label for="recipient">Recipient:</label><br>
+            <input type="text" id="recipient" name="recipient" required><br><br>
+            <label for="amount">Amount:</label><br>
+            <input type="number" id="amount" name="amount" required><br><br>
+            <button type="submit">Add Transaction</button>
+        </form>
+
+        <h2>Blockchain</h2>
+        <table id="blockchain-table">
+            <thead>
+                <tr>
+                    <th>Index</th>
+                    <th>Timestamp</th>
+                    <th>Transactions</th>
+                    <th>Hash</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for block in chain %}
+                    <tr class="block-row">
+                        <td>{{ block.index }}</td>
+                        <td>{{ block.timestamp }}</td>
+                        <td>
+                            {% for transaction in block.transactions %}
+                                <div>
+                                    <strong>From:</strong> {{ transaction.sender }}<br>
+                                    <strong>To:</strong> {{ transaction.recipient }}<br>
+                                    <strong>Amount:</strong> {{ transaction.amount }}
+                                </div>
+                                {% if not loop.last %}<hr>{% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>{{ block.hash }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <script>
+            document.getElementById('transaction-form').addEventListener('submit', async function(event) {
+                event.preventDefault();
+                const sender = document.getElementById('sender').value;
+                const recipient = document.getElementById('recipient').value;
+                const amount = parseFloat(document.getElementById('amount').value);
+
+                const transaction = { sender, recipient, amount };
+
+                const response = await fetch('/add_transaction', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(transaction)
+                });
+
+                const result = await response.json();
+                showMessage(result.message, response.ok ? 'success' : 'error');
+                if (response.ok) {
+                    // Give a slight delay for the message to be seen before reloading
+                    setTimeout(() => {
+                        location.reload(); // Reload the page to show the new block
+                    }, 1500);
+                }
+            });
+
+            function showMessage(message, type) {
+                let msgBox = document.getElementById('message-box');
+                if (!msgBox) {
+                    msgBox = document.createElement('div');
+                    msgBox.id = 'message-box';
+                    msgBox.classList.add('message-box');
+                    document.body.appendChild(msgBox);
+                }
+
+                msgBox.textContent = message;
+                msgBox.classList.remove('success', 'error'); // Clear previous types
+                msgBox.classList.add(type);
+                msgBox.classList.add('show');
+
+                setTimeout(() => {
+                    msgBox.classList.remove('show');
+                }, 3000); // Message disappears after 3 seconds
+            }
+        </script>
+    </div>
+    <div id="message-box" class="message-box"></div>
+</body>
